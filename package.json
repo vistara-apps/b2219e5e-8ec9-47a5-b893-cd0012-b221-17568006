@@ -1,40 +1,37 @@
-    {
-      "name": "ai-influencer-matching",
-      "version": "0.1.0",
-      "private": true,
-      "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint"
-      },
-      "dependencies": {
-        "@coinbase/onchainkit": "^0.38.19",
-        "@farcaster/frame-sdk": "^0.0.60",
-        "@upstash/redis": "^1.34.4",
-        "next": "^15.3.3",
-        "react": "^18",
-        "react-dom": "^18",
-        "@tanstack/react-query": "^5",
-        "viem": "^2.27.2",
-        "wagmi": "^2.14.11",
-        "autoprefixer": "^10.4.0",
-        "tailwindcss": "^3.4.1",
-        "postcss": "^8",
-        "pino-pretty": "^11.0.0"
-      },
-      "devDependencies": {
-        "@types/node": "^20",
-        "@types/react": "^18",
-        "@types/react-dom": "^18",
-        "eslint": "^8",
-        "eslint-config-next": "15.3.3",
-        "eslint-config-prettier": "^10.1.1",
-        "eslint-plugin-prettier": "^5.2.3",
-        "eslint-plugin-react": "^7.37.4",
-        "eslint-plugin-react-hooks": "^5.2.0",
-        "prettier": "^3.5.3",
-        "typescript": "^5"
-      }
-    }
-  
+{
+  "name": "influencermatch",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:studio": "prisma studio"
+  },
+  "dependencies": {
+    "@coinbase/onchainkit": "^0.1.0",
+    "@farcaster/frame-sdk": "^0.1.0",
+    "@prisma/client": "^5.0.0",
+    "@tanstack/react-query": "^4.29.19",
+    "bcrypt": "^5.1.0",
+    "ethers": "^6.6.4",
+    "next": "13.4.10",
+    "next-auth": "^4.22.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "viem": "^1.4.1",
+    "wagmi": "^1.3.9"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.14",
+    "eslint": "8.44.0",
+    "eslint-config-next": "13.4.10",
+    "postcss": "^8.4.25",
+    "prisma": "^5.0.0",
+    "tailwindcss": "^3.3.2"
+  }
+}
+
