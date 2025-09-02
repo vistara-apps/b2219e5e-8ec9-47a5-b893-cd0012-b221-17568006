@@ -1,18 +1,28 @@
-    import { Providers } from './providers';
-    import './globals.css';
+'use client';
 
-    export const metadata = {
-      title: 'AI Influencer Matching',
-      description: 'AI-powered micro-influencer matching and campaign management.',
-    };
+import { Inter } from 'next/font/google';
+import { SessionProvider } from 'next-auth/react';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import './globals.css';
+import Navigation from './components/Navigation';
 
-    export default function RootLayout({ children }) {
-      return (
-        <html lang="en">
-          <body>
-            <Providers>{children}</Providers>
-          </body>
-        </html>
-      );
-    }
-  
+const inter = Inter({ subsets: ['latin'] });
+const queryClient = new QueryClient();
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className={inter.className}>
+        <SessionProvider>
+          <QueryClientProvider client={queryClient}>
+            <div className="min-h-screen bg-bg">
+              <Navigation />
+              <main>{children}</main>
+            </div>
+          </QueryClientProvider>
+        </SessionProvider>
+      </body>
+    </html>
+  );
+}
+

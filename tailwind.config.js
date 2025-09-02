@@ -1,44 +1,36 @@
-    /** @type {import('tailwindcss').Config} */
-    module.exports = {
-      content: [
-        './pages/**/*.{js,ts,jsx,tsx,mdx}',
-        './components/**/*.{js,ts,jsx,tsx,mdx}',
-        './app/**/*.{js,ts,jsx,tsx,mdx}',
-      ],
-      theme: {
-        extend: {
-          colors: {
-            bg: 'hsl(210 30% 95%)',
-            accent: 'hsl(170 70% 50%)',
-            primary: 'hsl(210 40% 35%)',
-            surface: 'hsl(210 30% 100%)',
-          },
-          borderRadius: {
-            lg: '16px',
-            md: '10px',
-            sm: '6px',
-          },
-          boxShadow: {
-            card: '0 4px 12px hsla(0, 0%, 0%, 0.08)',
-          },
-          spacing: {
-            lg: '20px',
-            md: '12px',
-            sm: '8px',
-          },
-          fontSize: {
-            body: ['1rem', { lineHeight: '1.5' }],
-            display: ['1.875rem', { fontWeight: 'bold' }],
-          },
-          transitionDuration: {
-            base: '200ms',
-            fast: '100ms',
-          },
-          transitionTimingFunction: {
-            'ease-in-out': 'ease-in-out',
-          },
-        },
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        bg: 'var(--bg)',
+        accent: 'var(--accent)',
+        primary: 'var(--primary)',
+        surface: 'var(--surface)',
       },
-      plugins: [],
-    }
-  
+      borderRadius: {
+        'lg': 'var(--radius-lg)',
+        'md': 'var(--radius-md)',
+        'sm': 'var(--radius-sm)',
+      },
+      boxShadow: {
+        'card': 'var(--shadow-card)',
+      },
+      spacing: {
+        'lg': 'var(--spacing-lg)',
+        'md': 'var(--spacing-md)',
+        'sm': 'var(--spacing-sm)',
+      },
+      backgroundColor: {
+        'accent-50': 'hsl(170 70% 95%)',
+      },
+    },
+  },
+  plugins: [],
+}
+

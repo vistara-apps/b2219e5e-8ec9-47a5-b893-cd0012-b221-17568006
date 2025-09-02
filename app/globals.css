@@ -1,9 +1,123 @@
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-    body {
-      background-color: hsl(210 30% 95%);
-      font-family: system-ui, -apple-system, sans-serif;
-    }
+:root {
+  /* Colors */
+  --bg: hsl(210 30% 95%);
+  --accent: hsl(170 70% 50%);
+  --primary: hsl(210 40% 35%);
+  --surface: hsl(210 30% 100%);
   
+  /* Radius */
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+  
+  /* Shadows */
+  --shadow-card: 0 4px 12px hsla(0, 0%, 0%, 0.08);
+  
+  /* Spacing */
+  --spacing-lg: 20px;
+  --spacing-md: 12px;
+  --spacing-sm: 8px;
+}
+
+@layer base {
+  body {
+    @apply bg-bg text-gray-900;
+  }
+}
+
+@layer components {
+  .text-display {
+    @apply text-3xl font-bold;
+  }
+  
+  .text-body {
+    @apply text-base leading-6 font-normal;
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .rounded-lg {
+    border-radius: var(--radius-lg);
+  }
+  
+  .rounded-md {
+    border-radius: var(--radius-md);
+  }
+  
+  .rounded-sm {
+    border-radius: var(--radius-sm);
+  }
+  
+  .p-lg {
+    padding: var(--spacing-lg);
+  }
+  
+  .p-md {
+    padding: var(--spacing-md);
+  }
+  
+  .p-sm {
+    padding: var(--spacing-sm);
+  }
+  
+  .px-lg {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+  
+  .px-md {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+  
+  .px-sm {
+    padding-left: var(--spacing-sm);
+    padding-right: var(--spacing-sm);
+  }
+  
+  .py-lg {
+    padding-top: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+  }
+  
+  .py-md {
+    padding-top: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+  }
+  
+  .py-sm {
+    padding-top: var(--spacing-sm);
+    padding-bottom: var(--spacing-sm);
+  }
+  
+  .mb-lg {
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .mb-md {
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .mb-sm {
+    margin-bottom: var(--spacing-sm);
+  }
+  
+  .gap-lg {
+    gap: var(--spacing-lg);
+  }
+  
+  .gap-md {
+    gap: var(--spacing-md);
+  }
+  
+  .gap-sm {
+    gap: var(--spacing-sm);
+  }
+}
+

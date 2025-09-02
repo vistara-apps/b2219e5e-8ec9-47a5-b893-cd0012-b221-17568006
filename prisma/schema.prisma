@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String      @id @default(cuid())
+  username      String
+  email         String      @unique
+  role          UserRole
+  walletAddress String?     @unique
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  
+  // Relations
+  influencer    Influencer?
+  campaigns     Campaign[]  @relation("BusinessCampaigns")
+}
+
+enum UserRole {
+  BUSINESS
+  INFLUENCER
+}
+
+model Influencer {
+  id                String              @id @default(cuid())
+  userId            String              @unique
+  platform          String
+  followers         Int                 @default(0)
+  engagementRate    Float               @default(0)
+  niche             String
+  authenticityScore Int                 @default(50)
+  verified          Boolean             @default(false)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  user              User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  influencerCampaigns InfluencerCampaign[] @relation("InfluencerCampaigns")
+}
+
+model Campaign {
+  id                String              @id @default(cuid())
+  businessId        String
+  title             String
+  description       String
+  goals             String
+  targetAudience    String
+  budget            Float
+  startDate         DateTime?
+  endDate           DateTime?
+  status            CampaignStatus      @default(DRAFT)
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  business          User                @relation("BusinessCampaigns", fields: [businessId], references: [id])
+  influencerCampaigns InfluencerCampaign[] @relation("CampaignInfluencers")
+}
+
+enum CampaignStatus {
+  DRAFT
+  MATCHING
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+model InfluencerCampaign {
+  id                String              @id @default(cuid())
+  campaignId        String
+  influencerId      String
+  brief             String
+  contentUrl        String?
+  contentNotes      String?
+  feedbackNotes     String?
+  contentStatus     ContentStatus       @default(PENDING)
+  paymentStatus     PaymentStatus       @default(UNPAID)
+  paymentAmount     Float?
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
+  
+  // Relations
+  campaign          Campaign            @relation("CampaignInfluencers", fields: [campaignId], references: [id], onDelete: Cascade)
+  influencer        Influencer          @relation("InfluencerCampaigns", fields: [influencerId], references: [id], onDelete: Cascade)
+}
+
+enum ContentStatus {
+  PENDING
+  SUBMITTED
+  APPROVED
+  REJECTED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PROCESSING
+  PAID
+  FAILED
+}
+
